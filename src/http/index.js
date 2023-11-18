@@ -2,7 +2,7 @@ import axios from "axios";
 import ScriptService from "../services/ScriptService";
 import CollectionService from "../services/CollectionService";
 
-export const API_URL = "http://shadl7.ru:5000/api";
+export const API_URL = "https://shadl7.ru/api";
 
 const $api = axios.create({
     withCredentials: true,

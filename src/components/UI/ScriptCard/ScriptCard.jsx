@@ -15,7 +15,9 @@ const ScriptCard = ({sc: index}) => {
     let autoSaver = new AutoSaver((data) => {
         let script = {...store.scripts[index]}
         script.content = data
-        ScriptService.UpdateScript(script)
+        ScriptService.UpdateScript(script).then((newScript) => {
+            // TODO: overwrite script
+        })
     }, null)
     return (
         <div className={cl.card}>
