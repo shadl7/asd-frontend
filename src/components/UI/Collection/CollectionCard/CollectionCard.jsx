@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import cl from './CollectionCard.module.css'
 import CollectionService from "../../../../services/CollectionService";
 import {Context} from "../../../../index";
@@ -6,23 +6,27 @@ import {observer} from "mobx-react-lite";
 import Editor from "../../Editor/Editor";
 import AutoSaver from "../../../AutoSaver";
 import CollectionName from "../CardName/CollectionName";
+import ScriptInCollection from "../ScriptInCollection/ScriptInCollection";
+import ScriptCard from "../../Scripts/ScriptCard/ScriptCard";
+import AddScript from "../AddScript/AddScript";
 
 const CollectionCard = ({index}) => {
     const {store} = useContext(Context);
-    /*const [showEditor, setShowEditor] = useState(false)
+    const [showEditor, setShowEditor] = useState(false)
     let autoSaver = new AutoSaver((data) => {
-        let script = {...store.scripts[index]}
-        script.content = data
-        ScriptService.UpdateScript(script)
-    }, null)*/ // TODO: collection edit
+        let collection = {...store.collections[index]}
+        collection.content = data
+        CollectionService.UpdateCollection(collection).then()
+    }, null)
     return (
         <div className={cl.card}>
             <div className={cl.header}>
                 <CollectionName name={store.collections[index].name} index={index}/>
                 <div className={cl.side}>
+                    <AddScript index={index}/>
                     <img src={"./expand.png"} className={cl.icon} onClick={
                         (e) => {
-                            /*setShowEditor(!showEditor)*/
+                            setShowEditor(!showEditor)
                         }
                     }/>
                     <img src={"./settings.png"} className={cl.icon} onClick={
@@ -40,6 +44,28 @@ const CollectionCard = ({index}) => {
                     }/>
                 </div>
             </div>
+            {
+                showEditor
+                    ?
+                    store.collections && store.collections[index].content.map((col, i2) => {
+                        return (
+                            <ScriptInCollection key={String(col) + String(i2)} col={index} sc={store.scripts.findIndex((el) => {
+                                return el.id === col
+                            })}/>
+                        )
+                    })
+                    :
+                    null
+            }
+            {
+                store.collections[index].content.length === 0 && showEditor
+                    ?
+                    <div style={{fontSize: "32px"}}>
+                        Пусто!
+                    </div>
+                    :
+                    null
+            }
         </div>
     );
 };

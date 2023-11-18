@@ -1,6 +1,6 @@
 import React, {useContext, useEffect} from 'react';
 import {Context} from "../index";
-import {getCollections} from "../http";
+import {getCollections, getScripts} from "../http";
 import {observer} from "mobx-react-lite";
 import NewCollection from "../components/UI/Collection/NewCollection/NewCollection";
 import CollectionCard from "../components/UI/Collection/CollectionCard/CollectionCard";
@@ -11,8 +11,9 @@ const CollectionsPage = () => { // TODO: styles
     useEffect(() => {
         async function f() {
             store.setCollections(await getCollections(store.user.id))
+            store.setScripts(await getScripts(store.user.id))
         }
-        f();
+        f().then();
     }, []);
     return (
         <div className={cl.cloud_page}>
