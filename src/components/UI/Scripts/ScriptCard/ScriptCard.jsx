@@ -1,12 +1,12 @@
 import React, {useContext, useState} from 'react';
 import cl from './ScriptCard.module.css'
-import ScriptService from "../../../services/ScriptService";
-import {Context} from "../../../index";
+import ScriptService from "../../../../services/ScriptService";
+import {Context} from "../../../../index";
 import {observer} from "mobx-react-lite";
-import StyledInput from "../Input/StyledInput";
-import EditorInput from "../Editor/EditorInput";
-import Editor from "../Editor/Editor";
-import AutoSaver from "../../AutoSaver";
+import StyledInput from "../../Input/StyledInput";
+import EditorInput from "../../Editor/EditorInput";
+import Editor from "../../Editor/Editor";
+import AutoSaver from "../../../AutoSaver";
 import ScriptName from "./ScriptName";
 
 const ScriptCard = ({sc: index}) => {

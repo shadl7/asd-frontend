@@ -2,8 +2,8 @@ import React, {useContext, useEffect} from 'react';
 import {Context} from "../index";
 import {getCollections} from "../http";
 import {observer} from "mobx-react-lite";
-import NewCollection from "../components/UI/NewCollection/NewCollection";
-import CollectionCard from "../components/UI/CollectionCard/CollectionCard";
+import NewCollection from "../components/UI/Collection/NewCollection/NewCollection";
+import CollectionCard from "../components/UI/Collection/CollectionCard/CollectionCard";
 import cl from "./CloudPage.module.css"
 
 const CollectionsPage = () => { // TODO: styles

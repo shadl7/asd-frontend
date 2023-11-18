@@ -2,8 +2,8 @@ import React, {useContext, useState} from 'react';
 import Popup from 'reactjs-popup';
 import cl from './CollectionName.module.css'
 import {observer} from "mobx-react-lite";
-import {Context} from "../../../index";
-import CollectionService from "../../../services/CollectionService";
+import {Context} from "../../../../index";
+import CollectionService from "../../../../services/CollectionService";
 
 const CollectionName = ({name, index}) => { // TODO: combine CollectionName/ScriptName.module.css and other css files
     const {store} = useContext(Context);

@@ -2,8 +2,8 @@ import React, {useContext, useState} from 'react';
 import Popup from 'reactjs-popup';
 import cl from './ScriptName.module.css'
 import {observer} from "mobx-react-lite";
-import {Context} from "../../../index";
-import ScriptService from "../../../services/ScriptService";
+import {Context} from "../../../../index";
+import ScriptService from "../../../../services/ScriptService";
 
 const ScriptName = ({name, index}) => { // TODO: split into another folder
     const {store} = useContext(Context);

@@ -1,9 +1,9 @@
 import React, {useContext, useEffect} from 'react';
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
-import ScriptCard from "../components/UI/ScriptCard/ScriptCard";
+import ScriptCard from "../components/UI/Scripts/ScriptCard/ScriptCard";
 import {getScripts} from "../http";
-import NewScript from "../components/UI/NewScript/NewScript";
+import NewScript from "../components/UI/Scripts/NewScript/NewScript";
 import cl from "./CloudPage.module.css"
 
 const ScriptsPage = () => {

@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
-import StyledInput from "../Input/StyledInput";
-import {Context} from "../../../index";
-import ScriptService from "../../../services/ScriptService";
+import StyledInput from "../../Input/StyledInput";
+import {Context} from "../../../../index";
+import ScriptService from "../../../../services/ScriptService";
 import {observer} from "mobx-react-lite";
 import cl from "./NewScript.module.css"
 

@@ -1,10 +1,10 @@
 import React, {useContext} from 'react';
 import cl from './CollectionCard.module.css'
-import CollectionService from "../../../services/CollectionService";
-import {Context} from "../../../index";
+import CollectionService from "../../../../services/CollectionService";
+import {Context} from "../../../../index";
 import {observer} from "mobx-react-lite";
-import Editor from "../Editor/Editor";
-import AutoSaver from "../../AutoSaver";
+import Editor from "../../Editor/Editor";
+import AutoSaver from "../../../AutoSaver";
 import CollectionName from "../CardName/CollectionName";
 
 const CollectionCard = ({index}) => {
