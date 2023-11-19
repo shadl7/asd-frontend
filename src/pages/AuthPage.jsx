@@ -22,11 +22,11 @@ const AuthPage = () => {
                     type="password"
                     value={password}
                     placeholder="Пароль"/>
-                <div>
-                    <button onClick={() => store.login(email, password)}>
+                <div className={cl.buttons}>
+                    <button onClick={() => store.login(email, password)} className={cl.button}>
                         Войти
                     </button>
-                    <button onClick={() => store.registration(email, password)}>
+                    <button onClick={() => store.registration(email, password)} className={cl.button}>
                         Регистрация
                     </button>
                 </div>
