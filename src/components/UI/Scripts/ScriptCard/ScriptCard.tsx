@@ -3,16 +3,14 @@ import cl from './ScriptCard.module.css'
 import ScriptService from "../../../../services/ScriptService";
 import {Context} from "../../../../index";
 import {observer} from "mobx-react-lite";
-import StyledInput from "../../Input/StyledInput";
-import EditorInput from "../../Editor/EditorInput";
 import Editor from "../../Editor/Editor";
 import AutoSaver from "../../../AutoSaver";
 import ScriptName from "./ScriptName";
 
-const ScriptCard = ({sc: index}) => {
+const ScriptCard = ({sc: index} : {sc: number}) => {
     const {store} = useContext(Context);
     const [showEditor, setShowEditor] = useState(false)
-    let autoSaver = new AutoSaver((data) => {
+    let autoSaver = new AutoSaver((data: string) => {
         let script = {...store.scripts[index]}
         script.content = data
         ScriptService.UpdateScript(script).then((newScript) => {
@@ -45,7 +43,7 @@ const ScriptCard = ({sc: index}) => {
             {
                 showEditor
                     ?
-                    <Editor sid={store.scripts[index].id} code={store.scripts[index].content} autoSaveCallback={(value) => {
+                    <Editor sid={store.scripts[index].id} code={store.scripts[index].content} autoSaveCallback={(value: string) => {
                         autoSaver.updateSaver(value)
                     }}/>
                     :

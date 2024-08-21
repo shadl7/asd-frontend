@@ -4,9 +4,10 @@ import CollectionService from "../../../../services/CollectionService";
 import Popup from "reactjs-popup";
 import {Context} from "../../../../index";
 import {observer} from "mobx-react-lite";
+import Store from "../../../../store/store";
 
-const AddScript = ({index}) => {
-    const {store} = useContext(Context);
+const AddScript = ({index} : {index: number}) => {
+    const {store} = useContext(Context) as { store: Store};
     return (
         <Popup
             trigger=

@@ -14,7 +14,7 @@ const SiteRouter = () => {
             store.isAuth
             ?
             <Routes>
-                <Route exact path="/" element={<MainPage/>} />
+                <Route path="/" element={<MainPage/>} />
                 <Route path="/auth" element={<AuthPage/>} />
                 <Route path="/profile" element={<ProfilePage/>} />
                 <Route path="/collections" element={<CollectionsPage/>} />

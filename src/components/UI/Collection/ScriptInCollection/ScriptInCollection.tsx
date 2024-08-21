@@ -4,7 +4,7 @@ import {Context} from "../../../../index";
 import {observer} from "mobx-react-lite";
 import CollectionService from "../../../../services/CollectionService";
 
-const ScriptInCollection = ({col, sc}) => {
+const ScriptInCollection = ({col, sc}: {col: number, sc: number}) => {
     const {store} = useContext(Context);
     return (
         <div className={cl.main}>

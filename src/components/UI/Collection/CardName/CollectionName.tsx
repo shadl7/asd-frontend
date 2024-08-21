@@ -5,7 +5,7 @@ import {observer} from "mobx-react-lite";
 import {Context} from "../../../../index";
 import CollectionService from "../../../../services/CollectionService";
 
-const CollectionName = ({name, index}) => { // TODO: combine CollectionName/ScriptName.module.css and other css files
+const CollectionName = ({name, index}: {name: string, index: number}) => { // TODO: combine CollectionName/ScriptName.module.css and other css files
     const {store} = useContext(Context);
     const [newName, setNewName] = useState("")
     return <div className={cl.header}>

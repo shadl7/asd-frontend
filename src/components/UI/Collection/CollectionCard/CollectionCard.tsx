@@ -3,17 +3,15 @@ import cl from './CollectionCard.module.css'
 import CollectionService from "../../../../services/CollectionService";
 import {Context} from "../../../../index";
 import {observer} from "mobx-react-lite";
-import Editor from "../../Editor/Editor";
 import AutoSaver from "../../../AutoSaver";
 import CollectionName from "../CardName/CollectionName";
 import ScriptInCollection from "../ScriptInCollection/ScriptInCollection";
-import ScriptCard from "../../Scripts/ScriptCard/ScriptCard";
 import AddScript from "../AddScript/AddScript";
 
-const CollectionCard = ({index}) => {
+const CollectionCard = ({index} : {index: number}) => {
     const {store} = useContext(Context);
     const [showEditor, setShowEditor] = useState(false)
-    let autoSaver = new AutoSaver((data) => {
+    let autoSaver = new AutoSaver((data: string[]) => {
         let collection = {...store.collections[index]}
         collection.content = data
         CollectionService.UpdateCollection(collection).then()

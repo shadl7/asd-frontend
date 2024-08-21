@@ -1,11 +1,11 @@
 class AutoSaver {
-    timeout;
+    timeout: NodeJS.Timeout | undefined;
     saveFunc;
-    constructor(save, content) {
+    constructor(save: (value: any) => void, content: any) {
         this.saveFunc = save
         this.updateSaver(content)
     }
-    async updateSaver(content) {
+    async updateSaver(content: any) {
         if (this.timeout !== undefined && this.timeout !== null) {
             clearTimeout(this.timeout)
         }

@@ -1,27 +1,27 @@
 import React, {useContext, useState} from 'react';
 import StyledInput from "../../Input/StyledInput";
 import {Context} from "../../../../index";
-import ScriptService from "../../../../services/ScriptService";
+import CollectionService from "../../../../services/CollectionService";
 import {observer} from "mobx-react-lite";
-import cl from "./NewScript.module.css"
+import cl from './NewCollection.module.css'
 
-const NewScript = () => {
+const NewCollection = () => {
     const {store} = useContext(Context);
     const [name, setName] = useState('')
     return (
-        <div className={cl.new_script}>
+        <div className={cl.new_collection}>
             <div style={{fontSize: "32px"}}>
-                Сценарии
+                Наборы сценариев
             </div>
             <div className={cl.right_side}>
                 <StyledInput
-                    onChange={e => setName(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                          value={name}
                          type="text"
-                         placeholder="Имя сценария"/>
+                         placeholder="Имя коллекции"/>
                 <button onClick={(e) => { // TODO: add confirm dialog
-                    ScriptService.NewScript(name, "", "", store.user.id).then((req) => {
-                            store.setScripts([...store.scripts, req.data.script])
+                    CollectionService.NewCollection(name, [], (store.user as user).id).then((req) => {
+                            store.setCollections([...store.collections, req.data.collection])
                         }
                     );
                     setName("")
@@ -34,4 +34,4 @@ const NewScript = () => {
     );
 };
 
-export default observer(NewScript);
+export default observer(NewCollection);

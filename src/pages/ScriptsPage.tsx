@@ -10,7 +10,7 @@ const ScriptsPage = () => {
     const {store} = useContext(Context);
     useEffect(() => {
         async function f() {
-            store.setScripts(await getScripts(store.user.id))
+            store.setScripts(await getScripts((store.user as user).id))
         }
         f();
     }, [store]);

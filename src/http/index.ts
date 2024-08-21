@@ -2,7 +2,7 @@ import axios from "axios";
 import ScriptService from "../services/ScriptService";
 import CollectionService from "../services/CollectionService";
 
-export const API_URL = "https://shadl7.ru/api";
+export const API_URL: string = process.env.REACT_APP_BASE_URL || "https://shadl7.ru/api";
 
 const $api = axios.create({
     withCredentials: true,
@@ -33,22 +33,22 @@ $api.interceptors.response.use( config => {
 
 export default $api;
 
-export const getScripts = async (userid) => {
+export const getScripts = async (userid: string) => {
     try {
         const response = await ScriptService.GetScripts(userid)
         console.log(response);
         return response.data.scripts
-    } catch (e) {
+    } catch (e: any) {
         console.log(e.response?.data?.message);
     }
 };
 
-export const getCollections = async (userid) => {
+export const getCollections = async (userid: string) => {
     try {
         const response = await CollectionService.GetCollections(userid)
         console.log(response);
         return response.data.collections;
-    } catch (e) {
+    } catch (e: any) {
         console.log(e.response?.data?.message);
     }
 };

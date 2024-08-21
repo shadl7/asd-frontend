@@ -5,7 +5,7 @@ import Navbar from "./components/UI/Navbar/Navbar";
 import SiteRouter from "./components/SiteRouter";
 import {observer} from "mobx-react-lite";
 import {Context} from "./index";
-import ScriptService from "./services/ScriptService";
+
 const App = () => {
     const {store} = useContext(Context)
     useEffect(() => {

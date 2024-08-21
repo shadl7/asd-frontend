@@ -5,7 +5,7 @@ import {observer} from "mobx-react-lite";
 import {Context} from "../../../../index";
 import ScriptService from "../../../../services/ScriptService";
 
-const ScriptName = ({name, index}) => { // TODO: split into another folder
+const ScriptName = ({name, index}: {name: string, index: number}) => { // TODO: split into another folder
     const {store} = useContext(Context);
     const [newName, setNewName] = useState("")
     return <div className={cl.header}>

@@ -5,7 +5,7 @@ import "ace-builds/src-noconflict/theme-textmate";
 import "ace-builds/src-noconflict/ext-language_tools"
 import "ace-builds/src-noconflict/snippets/python";
 
-const Editor = ({sid, code, autoSaveCallback}) => {
+const Editor = ({sid, code, autoSaveCallback}: {sid: string, code: string, autoSaveCallback : (value: string) => void}) => {
     return (
         <AceEditor
             placeholder=""

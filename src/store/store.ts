@@ -1,60 +1,59 @@
 import {makeAutoObservable} from "mobx";
 import AuthService from "../services/AuthService";
-import axios from 'axios';
+import axios, {AxiosError} from 'axios';
 import {API_URL} from "../http";
 
 export default class Store {
-    user = {};
+    user: user | {} = {};
     isAuth = false;
     isLoading = false;
-    scripts = [];
-    collections = [];
+    scripts: Array<script> = [];
+    collections: Array<collection> = [];
 
     constructor() {
         makeAutoObservable(this);
     }
 
-    setAuth(bool) {
+    setAuth(bool: boolean) {
         this.isAuth = bool;
     }
 
-    setUser(user) {
+    setUser(user: user | {}) {
         this.user = user;
     }
 
-    setLoading(bool) {
+    setLoading(bool: boolean) {
         this.isLoading = bool;
     }
 
-    setScripts(arr) {
+    setScripts(arr: Array<script>) {
         this.scripts = arr;
     }
 
-    setCollections(arr) {
+    setCollections(arr: Array<collection>) {
         this.collections = arr;
-        console.log(arr)
     }
 
-    async login(email, password) {
+    async login(email: string, password: string) {
         try {
-            const response = await AuthService.login(email, password);
+            const response = await AuthService.login(email, password)
             console.log(response)
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true);
             this.setUser(response.data.user);
-        } catch (e) {
+        } catch (e: any) {
             console.log(e.response?.data?.message);
         }
     }
 
-    async registration(email, password) {
+    async registration(email: string, password: string) {
         try {
             const response = await AuthService.registration(email, password);
             console.log(response)
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true);
             this.setUser(response.data.user);
-        } catch (e) {
+        } catch (e: any) {
             console.log(e.response?.data?.message);
         }
     }
@@ -66,7 +65,7 @@ export default class Store {
             localStorage.removeItem('token');
             this.setAuth(false);
             this.setUser({});
-        } catch (e) {
+        } catch (e: any) {
             console.log(e.response?.data?.message);
         }
     }
@@ -79,7 +78,7 @@ export default class Store {
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true);
             this.setUser(response.data.user);
-        } catch (e) {
+        } catch (e: any) {
             console.log(e.response?.data?.message);
         } finally {
             this.setLoading(false);

@@ -10,8 +10,8 @@ const CollectionsPage = () => { // TODO: styles
     const {store} = useContext(Context);
     useEffect(() => {
         async function f() {
-            store.setCollections(await getCollections(store.user.id))
-            store.setScripts(await getScripts(store.user.id))
+            store.setCollections(await getCollections((store.user as user).id))
+            store.setScripts(await getScripts((store.user as user).id))
         }
         f().then();
     }, []);
